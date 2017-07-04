@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Study React</title>
+    <script src="js/react.min.js"></script>
+    <script src="js/react-dom.min.js"></script>
+    <script src="https://cdn.bootcss.com/babel-standalone/6.22.1/babel.min.js"></script>
+</head>
+<body>
+<div id="app"></div>
+<script type="text/babel">
+
+    var MessageBox=React.createClass({
+        //定义初始状态
+        getInitialState:function () {
+            return{
+                isVisible:true,
+                titleMessage:'start to learn state',
+            }
+        },
+        render:function () {
+            var styObj={
+                display:this.state.isVisible?'block':'none',
+            }
+            return(
+                    <div>
+                        <h1 style={styObj}>{this.state.titleMessage}</h1>
+                        <Submessage/>
+                    </div>
+            )
+        }
+    });
+    var Submessage=React.createClass({
+        render:function(){
+            return(
+                    <div>
+                        <h3>let's go</h3>
+                    </div>
+            )
+        }
+    });
+   /* 改变状态
+    Box.setState({titleMessage:'hahah'})React会重新render一下
+    如果直接用Box.state.isVisible=false;
+    需要使用forceUpdate*/
+    var Box=ReactDOM.render(<MessageBox/>,document.getElementById('app'),
+        function () {
+        console.log('渲染完成啦！');
+    })
+
+</script>
+</body>
+</html>
